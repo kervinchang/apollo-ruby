@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "apollo/ruby"
+require "apollo"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
