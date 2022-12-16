@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/apollo/ruby/version"
+require_relative "lib/apollo/ruby/on"
 
 Gem::Specification.new do |spec|
   spec.name = "apollo-ruby"

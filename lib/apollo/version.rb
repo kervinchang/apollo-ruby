@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
 module Apollo
-  module Ruby
-    VERSION = "0.1.0"
-  end
+  VERSION = "1.0.0"
 end
