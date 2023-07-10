@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Apollo
   # A copy of Apollo's base module class methods.
   class Instance
@@ -17,13 +19,17 @@ module Apollo
 
     def configure
       yield(configuration) if block_given?
-      self.client = Client.new(configuration)
-      client
+      self.client = @client || Client.new(configuration)
     end
 
-    def fetch(key, opts = {})
+    def fetch(key, default = nil, opts = {}, &block)
       opts[:disable_cache] = false unless opts.key?(:disable_cache)
-      client.fetch(key, opts[:disable_cache])
+      value = client.fetch(key, opts[:disable_cache])
+      value || (block_given? ? block.call(key) : default)
+    end
+
+    def [](key)
+      fetch(key)
     end
   end
 end

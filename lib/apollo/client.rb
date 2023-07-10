@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Apollo
   # Get configuration data from Apollo server.
   class Client
-
     attr_accessor :configuration
 
     def initialize(configuration)
@@ -9,11 +10,9 @@ module Apollo
     end
 
     def fetch(key, disable_cache)
-      if disable_cache
-        uncached_http_get(key)
-      else
-        cached_http_get(key)
-      end
+      return nil if [configuration.server, configuration.appid, configuration.secret].any?(&:nil?)
+
+      disable_cache ? uncached_http_get(key) : cached_http_get(key)
     end
 
     def cached_http_get(key)

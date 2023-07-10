@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
+require "logger"
 require "apollo/auth"
 require "apollo/client"
 require "apollo/configuration"
 require "apollo/http"
 require "apollo/instance"
-require "apollo/log"
 require "apollo/utils"
 require "apollo/version"
 
@@ -14,6 +16,10 @@ module Apollo
 
     def instance
       @instance ||= Apollo::Instance.new
+    end
+
+    def logger
+      @logger ||= ::Logger.new($stderr)
     end
 
     def_delegators :instance, :client=, :configuration=, :configuration, :client, :configure, :fetch

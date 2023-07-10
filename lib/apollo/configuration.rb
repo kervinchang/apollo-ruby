@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Apollo
   # Set Apollo application configuration.
   class Configuration
-
     # Cluster name of Apollo application.
     attr_reader :cluster
 
